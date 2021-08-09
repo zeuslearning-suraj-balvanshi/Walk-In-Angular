@@ -1,1 +1,616 @@
-<p>registration works!</p>
+<div class="registration-wrapper">
+  <!-- form starts here -->
+  <form [formGroup]="registration">
+    <div class="form-control">
+      <svg
+        class="nav-back"
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="18"
+        viewBox="0 0 12 18"
+        fill="#3FD28B"
+      >
+        <path
+          data-name=""
+          d="M78.984,82V67.844l3.609,3.563L84,70l-6-6-6,6,1.406,1.406,3.609-3.562V82Z"
+          transform="translate(-72 -64) "
+          fill-rule="evenodd"
+        />
+      </svg>
+      <span class="form-title">Create An Account</span>
+      <button class="cancel-form">CANCEL</button>
+      <button class="create-form" routerLink="/walk-in">CREATE</button>
+    </div>
+    <div class="form-pages">
+      <span class="form-page-no">1</span>
+      <span class="form-page-title">Personal Information</span>
+      <span class="form-page-no">2</span>
+      <span class="form-page-title">Qualifications</span>
+      <span class="form-page-no">3</span>
+      <span class="form-page-title">Review and Proceed</span>
+    </div>
+    <!-- personal info -->
+    <div class="personal-info" formGroupName="personal" *ngIf="page === 1">
+      <label for="profileimg" class="img-section">
+        <input type="file" name="profileimg" id="" />
+        UPLOAD DISPLAY PICTURE
+        <span>Max image size: 5 MB</span>
+      </label>
+      <label for="firstname">
+        First Name*
+        <input
+          type="text"
+          name="firstname"
+          id="firstname"
+          class="textbox"
+          formControlName="firstname"
+          required
+        />
+        <span *ngIf="true" class="elements-title">
+          <!-- registration.get('personal.firstname')?.invalid &&
+          registration.get('personal.firstname')?.dirty -->
+          Numbers not allowed
+        </span>
+      </label>
+      <label for="lastname">
+        Last Name*
+        <input
+          type="text"
+          name="lastname"
+          id=""
+          class="textbox"
+          formControlName="lastname"
+        />
+      </label>
+      <label for="email">
+        Email*
+        <input
+          type="text"
+          name="email"
+          id="email"
+          class="textbox"
+          formControlName="email"
+        />
+      </label>
+      <label for="phno" class="phno-section" formGroupName="phnoGroup">
+        <span> Phone Number* </span>+
+        <input
+          type="text"
+          name="phno"
+          id="code"
+          class="textbox phcode"
+          formControlName="phcode"
+        />
+        <input
+          type="text"
+          name="phno"
+          id="phno"
+          class="textbox phno"
+          formControlName="phno"
+        />
+      </label>
+      <label for="">
+        <input type="file" name="resume" id="resume" />
+        UPLOAD RESUME
+      </label>
+      <label for="portfolio">
+        Enter Portfolio URL (if any)
+        <input
+          type="text"
+          name="portfolio"
+          id="portfolio"
+          class="textbox"
+          formControlName="portfolio"
+        />
+      </label>
+      <span class="element-title">Preferred Job Roles</span>
+      <label
+        for="instructional-designer"
+        class="checkbox-label"
+        formGroupName="roles"
+      >
+        <input
+          type="checkbox"
+          name="roles"
+          id="instructional-designer"
+          formControlName="instructionalDesigner"
+        />
+        Instructional Designer
+      </label>
+      <label
+        for="software-engineer"
+        class="checkbox-label"
+        formGroupName="roles"
+      >
+        <input
+          type="checkbox"
+          name="roles"
+          id="software-engineer"
+          formControlName="softwareEngineer"
+        />
+        Software Engineer
+      </label>
+      <label
+        for="software-quality-engineer"
+        class="checkbox-label"
+        formGroupName="roles"
+      >
+        <input
+          type="checkbox"
+          name="roles"
+          id="software-quality-engineer"
+          formControlName="softwareQualityEngineer"
+        />
+        Software Quality Engineer
+      </label>
+      <label for="queries">
+        If You Are Registering Via A Referral, Please Mention Full Name Of The
+        Employee Who Referred You
+        <input
+          type="text"
+          name="queries"
+          id="queries"
+          class="textbox"
+          formControlName="referral"
+        />
+      </label>
+      <label for="sendupdate" class="checkbox-label">
+        <input
+          type="checkbox"
+          name="sendupdate"
+          id="sendupdate"
+          formControlName="sendUpdates"
+        />
+        Send me job related updates via mail
+      </label>
+    </div>
+    <!-- education section -->
+    <div class="education" *ngIf="page === 2">
+      <div class="title-section">
+        <span class="section-title">Educational Qualifications</span>
+        <span class="section-collapse"></span>
+      </div>
+      <!-- form starts here -->
+      <div class="form-section" formGroupName="education">
+        <label for="">
+          Aggregate Percentage*
+          <input type="text" class="textbox" formControlName="avgPercent" />
+        </label>
+        <label for="">
+          Year of Passing*
+          <select name="" id="" class="textbox" formControlName="yearOfPassing">
+            <option *ngFor="let year of years" value="{{ year }}">
+              {{ year }}
+            </option>
+          </select>
+        </label>
+        <label for="">
+          Qualification*
+          <select
+            name=""
+            id=""
+            class="textbox"
+            formControlName="qualification"
+          ></select>
+        </label>
+        <label for="">
+          Stream*
+          <select
+            name=""
+            id=""
+            class="textbox"
+            formControlName="stream"
+          ></select>
+        </label>
+        <label for="">
+          College*
+          <select
+            name=""
+            id=""
+            class="textbox"
+            formControlName="college"
+          ></select>
+        </label>
+        <label for="">
+          If others, please enter your college name
+          <input type="text" class="textbox" formControlName="newCollege" />
+        </label>
+        <label for="">
+          Where is your college located?*
+          <input type="text" class="textbox" formControlName="location" />
+        </label>
+      </div>
+    </div>
+    <!-- profession section -->
+    <!-- 1st part / user type fresher or experience -->
+    <div class="profession" formGroupName="profession" *ngIf="page === 2">
+      <div class="title-section">
+        <span class="section-title">Professional Qualifications</span>
+        <span class="section-collapse"></span>
+      </div>
+      <!-- form starts here -->
+      <div class="radio-section">
+        <span class="element-title"> Applicant Type* </span>
+        <label for="" class="user-type">
+          <input
+            type="radio"
+            [value]="true"
+            name="fresher"
+            id=""
+            formControlName="fresher"
+            (click)="addExp()"
+          />
+          Fresher
+        </label>
+        <label for="" class="user-type">
+          <input
+            type="radio"
+            [value]="false"
+            name="fresher"
+            id=""
+            formControlName="fresher"
+            (click)="removeExp()"
+          />
+          Experienced
+        </label>
+      </div>
+    </div>
+    <!-- 2nd part / other details -->
+    <div class="profession" formGroupName="profession" *ngIf="page === 2">
+      <div class="prof-section-2">
+        <label
+          for=""
+          formGroupName="experience"
+          *ngIf="this.registration.get('profession.fresher')?.value"
+        >
+          Years of Experience*
+          <input
+            type="text"
+            name=""
+            id=""
+            class="textbox"
+            formControlName="yearsOfExp"
+          />
+        </label>
+        <label
+          for=""
+          formGroupName="experience"
+          *ngIf="this.registration.get('profession.fresher')?.value"
+        >
+          Current CTC* (In Rupees)
+          <input
+            type="text"
+            name=""
+            id=""
+            class="textbox"
+            formControlName="currentCTC"
+          />
+        </label>
+        <label
+          for=""
+          formGroupName="experience"
+          *ngIf="this.registration.get('profession.fresher')?.value"
+        >
+          Expected CTC* (In Rupees)
+          <input
+            type="text"
+            name=""
+            id=""
+            class="textbox"
+            formControlName="expectedCTC"
+          />
+        </label>
+        <span class="element-title">
+          Select All The Technologies You Expertise In*
+        </span>
+        <label for="" class="checkbox-label" formGroupName="expertise">
+          <input type="checkbox" name="" id="" formControlName="javascript" />
+          Javascript
+        </label>
+        <label for="" class="checkbox-label" formGroupName="expertise">
+          <input type="checkbox" name="" id="" formControlName="angular" />
+          Angular JS
+        </label>
+        <label for="" class="checkbox-label" formGroupName="expertise">
+          <input type="checkbox" name="" id="" formControlName="react" />
+          React
+        </label>
+        <label for="" class="checkbox-label" formGroupName="expertise">
+          <input type="checkbox" name="" id="" formControlName="node" />
+          Node JS
+        </label>
+        <label for="" class="checkbox-label" formGroupName="expertise">
+          <input type="checkbox" name="" id="" formControlName="others" />
+          Others
+        </label>
+        <label for="">
+          If others, please mention
+          <input
+            type="text"
+            name=""
+            id=""
+            class="textbox"
+            formControlName="otherExpertise"
+            [attr.disabled]="
+              !this.registration.get('profession.expertise.others')?.value
+                ? true
+                : null
+            "
+          />
+        </label>
+        <span class="element-title">
+          Select All The Technologies You Are Familiar In
+        </span>
+        <label for="" class="checkbox-label" formGroupName="familiar">
+          <input type="checkbox" name="" id="" formControlName="javascript" />
+          Javascript
+        </label>
+        <label for="" class="checkbox-label" formGroupName="familiar">
+          <input type="checkbox" name="" id="" formControlName="angular" />
+          Angular JS
+        </label>
+        <label for="" class="checkbox-label" formGroupName="familiar">
+          <input type="checkbox" name="" id="" formControlName="react" />
+          React
+        </label>
+        <label for="" class="checkbox-label" formGroupName="familiar">
+          <input type="checkbox" name="" id="" formControlName="node" />
+          Node JS
+        </label>
+        <label for="" class="checkbox-label" formGroupName="familiar">
+          <input type="checkbox" name="" id="" formControlName="others" />
+          Others
+        </label>
+        <label for="">
+          Select All The Technologies You Are Familiar In
+          <input
+            type="text"
+            name=""
+            id=""
+            class="textbox"
+            formControlName="otherFamiliar"
+            [attr.disabled]="
+              !this.registration.get('profession.familiar.others')?.value
+                ? true
+                : null
+            "
+          />
+        </label>
+        <div class="radio-section">
+          <span class="element-title">
+            Are you currently on notice period?*
+          </span>
+          <label for="">
+            <input
+              type="radio"
+              [value]="true"
+              name=""
+              id="onNotice"
+              formControlName="onNotice"
+              (click)="addNotice()"
+            />
+            Yes
+          </label>
+          <label for="">
+            <input
+              type="radio"
+              [value]="false"
+              name=""
+              id="onNotice"
+              formControlName="onNotice"
+              (click)="removeNotice()"
+            />
+            No
+          </label>
+        </div>
+        <label
+          for=""
+          formGroupName="noticeDate"
+          *ngIf="registration.get('profession.onNotice')?.value"
+        >
+          If Yes, when will your notice period end?*
+          <input
+            type="date"
+            name=""
+            id=""
+            class="textbox"
+            FormControlName="startDate"
+          />
+        </label>
+        <label
+          for=""
+          formGroupName="noticeDate"
+          *ngIf="registration.get('profession.onNotice')?.value"
+        >
+          How long is your notice period?* (Mention in months)
+          <input
+            type="date"
+            name=""
+            id=""
+            class="textbox"
+            FormControlName="endDate"
+          />
+        </label>
+        <div class="radio-section">
+          <span class="element-title">
+            Have You Appeared For Any Test By Zeus in the past 12 months?*
+          </span>
+          <label for="">
+            <input
+              type="radio"
+              [value]="true"
+              name="recentlyApplied"
+              id=""
+              formControlName="recentlyApplied"
+            />
+            Yes
+          </label>
+          <label for="">
+            <input
+              type="radio"
+              [value]="false"
+              name="recentlyApplied"
+              id=""
+              formControlName="recentlyApplied"
+            />
+            No
+          </label>
+        </div>
+        <label for="">
+          If Yes, which role did you apply for?
+          <input
+            type="text"
+            name=""
+            id=""
+            class="textbox"
+            formControlName="recentlyAppliedRole"
+          />
+        </label>
+      </div>
+    </div>
+  </form>
+  <div class="review" *ngIf="page === 3">
+    <span class="review-title"> Personal Information </span>
+    <div class="profile-review">
+      <span class="element-title">First Name</span>
+      <div class="element-value">
+        {{ registration.get("personal.firstname")?.value | json }}
+      </div>
+      <span class="element-title">Last Name</span>
+      <div class="element-value">
+        {{ registration.get("personal.lastname")?.value | json }}
+      </div>
+      <span class="element-title">Email </span>
+      <div class="element-value">
+        {{ registration.get("personal.email")?.value | json }}
+      </div>
+      <span class="element-title">Phone Number</span>
+      <div class="element-value">
+        {{ registration.get("personal.phnoGroup.phcode")?.value | json }}
+        {{ registration.get("personal.phnoGroup.phno")?.value | json }}
+      </div>
+      <span class="element-title">Enter Porfolio URL (if any)</span>
+      <div class="element-value">
+        {{ registration.get("personal.portfolio")?.value | json }}
+      </div>
+      <span class="element-title">Preferred Roles</span>
+      <div class="element-value">
+        {{ registration.get("personal.roles")?.value | json }}
+      </div>
+      <span class="element-title">
+        If You Are Registering Via A Referral, Please Mention Full Name Of The
+        Employee Who Referred You
+      </span>
+      <div class="element-value">
+        {{ registration.get("referral")?.value | json }}
+      </div>
+    </div>
+    <span class="review-title"> Qualifications </span>
+    <div class="profile-review">
+      <div class="title-section">Educational Qualifications</div>
+      <span class="element-title">Aggregate Percentage</span>
+      <div class="element-value">
+        {{ registration.get("education.avgPercent")?.value | json }}
+      </div>
+      <span class="element-title">Year of Passing</span>
+      <div class="element-value">
+        {{ registration.get("education.yearOfPassing")?.value | json }}
+      </div>
+      <span class="element-title">Qualification</span>
+      <div class="element-value">
+        {{ registration.get("education.qualification")?.value | json }}
+      </div>
+      <span class="element-title">Stream</span>
+      <div class="element-value">
+        {{ registration.get("education.stream")?.value | json }}
+      </div>
+      <span class="element-title">College</span>
+      <div class="element-value">
+        {{ registration.get("education.college")?.value | json }}
+      </div>
+      <span class="element-title">
+        If others, please enter your college name
+      </span>
+      <div class="element-value">
+        {{ registration.get("education.newCollege")?.value | json }}
+      </div>
+      <span class="element-title"> Location </span>
+      <div class="element-value">
+        {{ registration.get("education.location")?.value | json }}
+      </div>
+    </div>
+    <div class="profile-review">
+      <span class="title-section">Professional Qualifications</span>
+      <span class="element-title">Applicant Type</span>
+      <div class="element-value">
+        {{ registration.get("profession.fresher")?.value | json }}
+      </div>
+      <span class="element-title">Years of Experience</span>
+      <div class="element-value">
+        {{ registration.get("profession.experience.yearsOfExp")?.value | json }}
+      </div>
+      <span class="element-title">Current CTC (In Rupees)</span>
+      <div class="element-value">
+        {{ registration.get("profession.experience.currentCTC")?.value | json }}
+      </div>
+      <span class="element-title">Expected CTC (In Rupees)</span>
+      <div class="element-value">
+        {{
+          registration.get("profession.experience.expectedCTC")?.value | json
+        }}
+      </div>
+      <span class="element-title"
+        >Select All The Technologies You Expertise In</span
+      >
+      <div class="element-value">
+        {{ registration.get("profession.expertise")?.value | json }}
+      </div>
+      <span class="element-title">If others, please mention</span>
+      <div class="element-value">
+        {{ registration.get("profession.otherExpertise")?.value | json }}
+      </div>
+      <span class="element-title"
+        >Select All The Technologies You are familiar In</span
+      >
+      <div class="element-value">
+        {{ registration.get("profession.familiar")?.value | json }}
+      </div>
+      <span class="element-title">If others, please mention</span>
+      <div class="element-value">
+        {{ registration.get("profession.otherFamiliar")?.value | json }}
+      </div>
+      <span class="element-title">Are you currently on notice period?</span>
+      <div class="element-value">
+        {{ registration.get("profession.onNotice")?.value | json }}
+      </div>
+      <span class="element-title"
+        >If Yes, when will your notice period end?</span
+      >
+      <div class="element-value">
+        {{ registration.get("profession.noticeDate.startDate")?.value | json }}
+      </div>
+      <span class="element-title"
+        >How long is your notice period? (Mention in months)</span
+      >
+      <div class="element-value">
+        {{ registration.get("profession.noticeDate.endDate")?.value | json }}
+      </div>
+      <span class="element-title"
+        >Have You Appeared For Any Test By Zeus in the past 12 months?</span
+      >
+      <div class="element-value">
+        {{ registration.get("profession.recentlyApplied")?.value | json }}
+      </div>
+      <span class="element-title">If Yes, which role did you apply for?</span>
+      <div class="element-value">
+        {{ registration.get("profession.recentlyAppliedRole")?.value | json }}
+      </div>
+    </div>
+  </div>
+  <div class="page-buttons">
+    <button class="previous" [disabled]="false" (click)="previous()">
+      PREVIOUS
+    </button>
+    <button class="next" [disabled]="false" (click)="next()">NEXT</button>
+  </div>
+</div>

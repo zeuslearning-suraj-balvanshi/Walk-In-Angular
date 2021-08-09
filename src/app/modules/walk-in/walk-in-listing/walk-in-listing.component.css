@@ -1,0 +1,100 @@
+.wrapper {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center;
+  justify-content: center; */
+  margin-bottom: 1rem;
+}
+
+.walk-in-container {
+  background: white;
+  box-shadow: 0px 4px 6px #0000003d;
+  display: flex;
+  flex-direction: column;
+  font-family: "quicksand";
+  margin: 2rem 1.5rem 0;
+  padding: 0 1rem;
+  min-width: 17rem;
+  flex: 1;
+}
+
+.expiry {
+  background: #ffe4e6;
+  border-radius: 2px;
+  color: #d10107;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  width: fit-content;
+  align-self: flex-end;
+  transform: translateY(-0.8rem);
+}
+
+.title {
+  color: #1f7a54;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.legends {
+  color: #666666;
+  font-size: 0.75rem;
+  font-weight: 600;
+  break-after: always;
+  margin-bottom: 0.5rem;
+}
+
+.info {
+  align-items: center;
+  border-bottom: 1px solid #0000001f;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.dates,
+.location,
+.role {
+  font-size: 0.875rem;
+  font-weight: 600;
+  align-items: center;
+}
+
+.dates::after {
+  border: 1px solid #0000001f;
+  content: "";
+  display: inline-block;
+  height: 0.75rem;
+  margin: 0 1rem;
+}
+
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.internship {
+  background: #eedd6b;
+  border-radius: 0.6rem;
+  font-size: 0.675rem;
+  padding: 0.125rem 0.5rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+button {
+  appearance: none;
+  border: none;
+  background: #3fd28b;
+  box-shadow: 0 0.22rem 0.33rem rgba(0, 0, 0, 0.23);
+  font-family: "quicksand";
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 1.75rem;
+  margin: 1rem;
+  max-width: 10rem;
+  align-self: center;
+}
